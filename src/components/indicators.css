@@ -1,0 +1,14 @@
+span{
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+span.night{
+  background: #0066CD;
+}
+span.green{
+  background: #33a532;
+}
+span.red{
+  background: #f9152f;
+}
