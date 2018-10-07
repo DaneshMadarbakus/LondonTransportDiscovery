@@ -11,14 +11,13 @@ class Menu extends Component {
         <form>
           {
             menuItems.map(line => {
-
               let night = '';
               let serviceStatus = '';
-              if (line.serviceTypes.filter(function (serviceType) { return serviceType.name === 'Night' }).length > 0) {
+              if (line.serviceTypes.filter((serviceType) => { return serviceType.name === 'Night' }).length > 0) {
                 night = <NightService />;
               } 
 
-              if (line.lineStatuses.filter(function (lineStatus) { return lineStatus.statusSeverity !== 10 }).length > 0) {
+              if (line.lineStatuses.filter((lineStatus) => { return lineStatus.statusSeverity !== 10 }).length > 0) {
                 serviceStatus = <DisruptedService />;
               } else {
                 serviceStatus = <GoodService />;

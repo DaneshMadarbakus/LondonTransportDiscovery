@@ -3,16 +3,27 @@ import './content.css';
 
 class Content extends Component {
   render() {
-    const { selectedOption } = this.props;
+    const { selectedOption, disruptedStatus } = this.props;
     let optionContent = '';
     if (selectedOption.length < 1) {
       optionContent = <p className="heading">Select Transport to view more</p>;
+    } else if (disruptedStatus !== true) {
+      optionContent = <div>
+        <p className="heading">No service disruptions</p>
+      </div>;
     } else {
       optionContent = <div>
-        <p className="heading">{selectedOption.name}</p>
-        <p>hello</p>
-      </div>;
-
+      <p className="heading">Service currently suffering disruptions</p>
+      <ul>
+      {
+        selectedOption.lineStatuses.map((statuses) => {
+          return(
+              <li>{statuses.reason}</li>
+          )
+        })
+      }
+      </ul>
+    </div>;
     }
 
     return (

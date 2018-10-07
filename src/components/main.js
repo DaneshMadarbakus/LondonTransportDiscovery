@@ -9,7 +9,8 @@ class Main extends Component {
     super(props);
     this.state = {
       transportLines: [],
-      selectedOption: []
+      selectedOption: [],
+      currentOptionDisrupted: false
     }
 
     this.loadApi = this.loadApi.bind(this);
@@ -65,10 +66,16 @@ class Main extends Component {
 
   handleChange(event) {
     const value = event.target.value;
-    const selection = this.state.transportLines.find(function (obj) { return obj.name === value; });;
+    const selection = this.state.transportLines.find((obj) => { return obj.name === value; });;
+    let disruptedStatus = false;
+
+    if(selection.lineStatuses.filter((lineStatus) => { return lineStatus.statusSeverity !== 10 }).length > 0){
+      disruptedStatus = true
+    }
 
     this.setState({
-      selectedOption: selection
+      selectedOption: selection,
+      currentOptionDisrupted: disruptedStatus
     });
   }
 
@@ -85,7 +92,7 @@ class Main extends Component {
             <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
           </div>
           <div className="content-holder">
-            <Content selectedOption={this.state.selectedOption} />
+            <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} />
           </div>
         </div>
       </div>
