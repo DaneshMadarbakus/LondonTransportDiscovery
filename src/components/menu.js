@@ -8,7 +8,6 @@ class Menu extends Component {
     const { menuItems } = this.props;
     return (
       <div className="menu">
-        <h2>MENU</h2>
         <form>
           {
             menuItems.map(line => {
@@ -33,7 +32,7 @@ class Menu extends Component {
                     type="radio"
                     value={line.name}
                     name="lines"
-                  // onChange={this.props.runChange}
+                    onChange={this.props.runChange}
                   />
                   <span className="name">{line.name}</span>
                   <span className="icons">

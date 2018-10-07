@@ -11,7 +11,9 @@ class Main extends Component {
       transportLines: [],
       selectedOption: []
     }
+
     this.loadApi = this.loadApi.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +63,14 @@ class Main extends Component {
       );
   }
 
+  handleChange(event) {
+    const value = event.target.value;
+    const selection = this.state.transportLines.find(function (obj) { return obj.name === value; });;
+
+    this.setState({
+      selectedOption: selection
+    });
+  }
 
   render() {
     return (
@@ -72,10 +82,10 @@ class Main extends Component {
         </ul>
         <div className="my-row">
           <div className="menu-holder">
-            <Menu menuItems={this.state.transportLines} />
+            <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
           </div>
           <div className="content-holder">
-            <Content />
+            <Content selectedOption={this.state.selectedOption} />
           </div>
         </div>
       </div>
