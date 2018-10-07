@@ -1,0 +1,51 @@
+form div label{
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  width:100%;
+}
+form div label input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  left:0;
+  top:0;
+  position: absolute;
+}
+form div label span {
+  display: block;
+  background: #ffffff;
+  transition: 0.35s all;
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 1px solid black;
+  border-left:1px solid black;
+  border-right:1px solid black;
+}
+form div label span.name{
+  flex:1;
+  border-right:none;
+}
+form div label span.icons{ 
+  border-left:none;
+  display:flex;
+  align-items:center;
+}
+form div label span.icons .indicator{ 
+  display:flex;
+  border:none;
+  padding:0;
+}
+form div label span.icons .indicator.red{ 
+  margin-left: 5px;
+}
+form div label span.icons .indicator.green{ 
+  margin-left: 5px;
+}
+form div:first-child label span{
+  border-top:1px solid black;
+} 
+form div label input:checked ~ span {
+  background: #000;
+  color: #fff;
+}

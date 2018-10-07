@@ -3,6 +3,23 @@
   margin: 0 auto;
 }
 
+.menu-key{
+  list-style-type:none;
+  margin:0;
+  padding:0 0.75rem;
+  display:flex; 
+  flex-wrap: wrap;
+  width: 100%;
+}
+.menu-key li{
+display:flex;
+align-items: center;
+padding: 0.25rem 2rem 0 0;
+}
+.menu-key li span{
+  margin-right: 0.5rem;
+}
+
 .my-row{
   display:flex;
 }
@@ -16,18 +33,4 @@
   width: 300px; 
   text-align: left;
   padding: 0 0.75rem;
-}
-
-.menu-key{
-  list-style-type:none;
-  margin:0;
-  padding:0;
-}
-.menu-key li{
-display:flex;
-align-items: center;
-padding: 0.25rem 0;
-}
-.menu-key li span{
-  margin-right: 1rem;
 }
