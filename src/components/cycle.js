@@ -4,7 +4,7 @@ import './cycle.css';
 class Cycle extends Component {
   render() {
     let searchResults = '';
-    console.log(this.props.cycleSearch);
+
     if (this.props.noCycleEntry){
       searchResults = <p>Please enter a search</p>;
     } else if (this.props.cycleLocations.length === 0 && this.props.cycleSearch.length > 0){

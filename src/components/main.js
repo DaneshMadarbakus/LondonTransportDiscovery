@@ -20,6 +20,7 @@ class Main extends Component {
     this.loadApi = this.loadApi.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCycleSubmit = this.handleCycleSubmit.bind(this);
+    this.cachedSearchResults = {test: 'test'};
   }
 
   componentDidMount() {
@@ -31,7 +32,6 @@ class Main extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log(result);
           result.sort(function (a, b) {
             const nameA = a.modeName.toUpperCase();
             const nameB = b.modeName.toUpperCase();
@@ -75,7 +75,7 @@ class Main extends Component {
       this.setState({
         isCycle: true
       });
-      return
+      return;
     }
     const selection = this.state.transportLines.find((obj) => { return obj.name === value; });;
     let disruptedStatus = false;
@@ -100,11 +100,20 @@ class Main extends Component {
       return;
     }
     const searchString = e.target.search.value;
-
+    if (this.cachedSearchResults[searchString]){
+      this.setState({
+        cycleLocations: this.cachedSearchResults[searchString],
+        cycleSearch: searchString,
+        noCycleEntry: false
+      });
+      return;
+    }
 
     fetch(`https://api.tfl.gov.uk/BikePoint/Search?query=${searchString}`)
       .then(res => res.json())
       .then((result) => {
+        this.cachedSearchResults[searchString] = result;
+
         this.setState({
           cycleLocations: result,
           cycleSearch: searchString,
