@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './content.css';
+import CycleContent from './cycle.js';
 
 class Content extends Component {
   render() {
-    const { selectedOption, disruptedStatus } = this.props;
+    const { selectedOption, disruptedStatus, cycleSelected } = this.props;
     let optionContent = '';
-    if (selectedOption.length < 1) {
+    if (cycleSelected){
+      optionContent = <CycleContent />
+    } else if (selectedOption.length < 1) {
       optionContent = <p className="heading">Select Transport to view more</p>;
     } else if (disruptedStatus !== true) {
       optionContent = <div>
@@ -16,9 +19,9 @@ class Content extends Component {
       <p className="heading">Service currently suffering disruptions</p>
       <ul>
       {
-        selectedOption.lineStatuses.map((statuses) => {
+        selectedOption.lineStatuses.map((statuses, i) => {
           return(
-              <li>{statuses.reason}</li>
+              <li key={i}>{statuses.reason}</li>
           )
         })
       }

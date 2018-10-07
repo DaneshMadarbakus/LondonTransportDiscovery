@@ -10,7 +10,8 @@ class Main extends Component {
     this.state = {
       transportLines: [],
       selectedOption: [],
-      currentOptionDisrupted: false
+      currentOptionDisrupted: false,
+      isCycle: false
     }
 
     this.loadApi = this.loadApi.bind(this);
@@ -66,6 +67,12 @@ class Main extends Component {
 
   handleChange(event) {
     const value = event.target.value;
+    if (value === 'cycle'){
+      this.setState({
+        isCycle: true
+      });
+      return 
+    }
     const selection = this.state.transportLines.find((obj) => { return obj.name === value; });;
     let disruptedStatus = false;
 
@@ -75,7 +82,8 @@ class Main extends Component {
 
     this.setState({
       selectedOption: selection,
-      currentOptionDisrupted: disruptedStatus
+      currentOptionDisrupted: disruptedStatus,
+      isCycle: false
     });
   }
 
@@ -92,7 +100,7 @@ class Main extends Component {
             <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
           </div>
           <div className="content-holder">
-            <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} />
+            <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} />
           </div>
         </div>
       </div>

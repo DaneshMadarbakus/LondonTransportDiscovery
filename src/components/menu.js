@@ -15,7 +15,7 @@ class Menu extends Component {
               let serviceStatus = '';
               if (line.serviceTypes.filter((serviceType) => { return serviceType.name === 'Night' }).length > 0) {
                 night = <NightService />;
-              } 
+              }
 
               if (line.lineStatuses.filter((lineStatus) => { return lineStatus.statusSeverity !== 10 }).length > 0) {
                 serviceStatus = <DisruptedService />;
@@ -25,24 +25,39 @@ class Menu extends Component {
 
               return (
                 <div key={line.name}>
-                <label>
-                  <input
-                    tab-index="0"
-                    type="radio"
-                    value={line.name}
-                    name="lines"
-                    onChange={this.props.runChange}
-                  />
-                  <span className="name">{line.name}</span>
-                  <span className="icons">
-                    {night}{serviceStatus}
-                  </span>                      
-                </label>
-              </div>
+                  <label>
+                    <input
+                      tab-index="0"
+                      type="radio"
+                      value={line.name}
+                      name="lines"
+                      onChange={this.props.runChange}
+                    />
+                    <span className="name">{line.name}</span>
+                    <span className="icons">
+                      {night}{serviceStatus}
+                    </span>
+                  </label>
+                </div>
               )
             }
             )
           }
+          <div>
+            <label>
+              <input
+                tab-index="0"
+                type="radio"
+                value="cycle"
+                name="lines"
+                onChange={this.props.runChange}
+              />
+              <span className="name">Cycle Hire</span>
+              <span className="icons">
+                {/* {night}{serviceStatus} */}
+              </span>
+            </label>
+          </div>
         </form>
       </div>
     );
