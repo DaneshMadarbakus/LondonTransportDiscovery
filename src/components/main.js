@@ -11,11 +11,15 @@ class Main extends Component {
       transportLines: [],
       selectedOption: [],
       currentOptionDisrupted: false,
-      isCycle: false
+      isCycle: false,
+      cycleLocations: [],
+      noCycleEntry: false,
+      cycleSearch: ''
     }
 
     this.loadApi = this.loadApi.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCycleSubmit = this.handleCycleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -67,16 +71,16 @@ class Main extends Component {
 
   handleChange(event) {
     const value = event.target.value;
-    if (value === 'cycle'){
+    if (value === 'cycle') {
       this.setState({
         isCycle: true
       });
-      return 
+      return
     }
     const selection = this.state.transportLines.find((obj) => { return obj.name === value; });;
     let disruptedStatus = false;
 
-    if(selection.lineStatuses.filter((lineStatus) => { return lineStatus.statusSeverity !== 10 }).length > 0){
+    if (selection.lineStatuses.filter((lineStatus) => { return lineStatus.statusSeverity !== 10 }).length > 0) {
       disruptedStatus = true
     }
 
@@ -85,6 +89,32 @@ class Main extends Component {
       currentOptionDisrupted: disruptedStatus,
       isCycle: false
     });
+  }
+
+  handleCycleSubmit(e) {
+    e.preventDefault();
+    if (e.target.search.value.length === 0) {
+      this.setState({
+        noCycleEntry: true
+      });
+      return;
+    }
+    const searchString = e.target.search.value;
+
+
+    fetch(`https://api.tfl.gov.uk/BikePoint/Search?query=${searchString}`)
+      .then(res => res.json())
+      .then((result) => {
+        this.setState({
+          cycleLocations: result,
+          cycleSearch: searchString,
+          noCycleEntry: false
+        })
+      },
+        (error) => {
+          // console.log(error);
+        }
+      )
   }
 
   render() {
@@ -100,7 +130,7 @@ class Main extends Component {
             <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
           </div>
           <div className="content-holder">
-            <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} />
+            <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} cycleSubmit={this.handleCycleSubmit} noCycleEntry={this.state.noCycleEntry} cycleLocations={this.state.cycleLocations} cycleSearch={this.state.cycleSearch} />
           </div>
         </div>
       </div>

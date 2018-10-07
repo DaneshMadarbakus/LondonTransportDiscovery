@@ -4,10 +4,10 @@ import CycleContent from './cycle.js';
 
 class Content extends Component {
   render() {
-    const { selectedOption, disruptedStatus, cycleSelected } = this.props;
+    const { selectedOption, disruptedStatus, cycleSelected, cycleSubmit, noCycleEntry, cycleLocations, cycleSearch } = this.props;
     let optionContent = '';
     if (cycleSelected){
-      optionContent = <CycleContent />
+      optionContent = <CycleContent cycleSubmit={cycleSubmit} noCycleEntry={noCycleEntry} cycleLocations={cycleLocations} cycleSearch={cycleSearch} />
     } else if (selectedOption.length < 1) {
       optionContent = <p className="heading">Select Transport to view more</p>;
     } else if (disruptedStatus !== true) {

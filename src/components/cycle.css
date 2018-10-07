@@ -1,0 +1,19 @@
+.cycle-form{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.cycle-form label input{
+  margin-left: 1rem;
+}
+
+.cycle-results ul{
+  padding-top: 2rem;
+  margin:0;
+}
+
+.cycle-results ul li {
+  text-align: left;
+  padding-bottom:1rem;
+}
