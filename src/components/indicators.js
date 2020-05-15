@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles.css';
+import './indicators.css';
 
 export const NightService = () => <span className="indicator night"></span>
 export const GoodService = () => <span className="indicator green"></span>

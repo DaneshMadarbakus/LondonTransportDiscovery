@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles.css';
+import './cycle.css';
 
 class Cycle extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './styles.css';
-import { NightService, GoodService, DisruptedService } from '../Indicators';
+import './menu.css';
+import { NightService, GoodService, DisruptedService } from './indicators.js';
 
 class Menu extends Component {
 

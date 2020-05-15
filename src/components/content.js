@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './styles.css';
-import CycleContent from '../Cycle';
+import './content.css';
+import CycleContent from './cycle.js';
 
 class Content extends Component {
   render() {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './styles.css';
-import Content from '../Content';
-import Menu from '../Menu';
-import { NightService, GoodService, DisruptedService } from '../Indicators';
+import './main.css';
+import Content from './content.js';
+import Menu from './menu.js';
+import { NightService, GoodService, DisruptedService } from './indicators.js';
 
 class Main extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ class Main extends Component {
     this.loadApi = this.loadApi.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCycleSubmit = this.handleCycleSubmit.bind(this);
-    this.cachedSearchResults = { test: 'test' };
+    this.cachedSearchResults = {test: 'test'};
   }
 
   componentDidMount() {
@@ -100,7 +100,7 @@ class Main extends Component {
       return;
     }
     const searchString = e.target.search.value;
-    if (this.cachedSearchResults[searchString]) {
+    if (this.cachedSearchResults[searchString]){
       this.setState({
         cycleLocations: this.cachedSearchResults[searchString],
         cycleSearch: searchString,
@@ -128,23 +128,21 @@ class Main extends Component {
 
   render() {
     return (
-      <main>
-        <div className="container">
-          <ul className="menu-key">
-            <li><NightService /> - indicates a night service</li>
-            <li><GoodService /> - indicates a good service</li>
-            <li><DisruptedService /> - indicates disruptions in the service</li>
-          </ul>
-          <div className="my-row">
-            <div className="menu-holder">
-              <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
-            </div>
-            <div className="content-holder">
-              <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} cycleSubmit={this.handleCycleSubmit} noCycleEntry={this.state.noCycleEntry} cycleLocations={this.state.cycleLocations} cycleSearch={this.state.cycleSearch} />
-            </div>
+      <div className="container">
+        <ul className="menu-key">
+          <li><NightService /> - indicates a night service</li>
+          <li><GoodService /> - indicates a good service</li>
+          <li><DisruptedService /> - indicates disruptions in the service</li>
+        </ul>
+        <div className="my-row">
+          <div className="menu-holder">
+            <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
+          </div>
+          <div className="content-holder">
+            <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} cycleSubmit={this.handleCycleSubmit} noCycleEntry={this.state.noCycleEntry} cycleLocations={this.state.cycleLocations} cycleSearch={this.state.cycleSearch} />
           </div>
         </div>
-      </main>
+      </div>
     );
   }
 }
