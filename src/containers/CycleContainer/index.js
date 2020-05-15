@@ -1,0 +1,1 @@
+//Logic for requests to bicycle api
