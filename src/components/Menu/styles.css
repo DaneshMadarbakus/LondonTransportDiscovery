@@ -22,30 +22,30 @@
   border-left:1px solid black;
   border-right:1px solid black;
 } */
-form div label span.name{
+form label span.name{
   flex:1;
   border-right:none;
 }
-form div label span.icons{ 
+form label span.icons{ 
   border-left:none;
   display:flex;
   align-items:center;
 }
-form div label span.icons .indicator{ 
+form label span.icons .indicator{ 
   display:flex;
   border:none;
   padding:0;
 }
-form div label span.icons .indicator.red{ 
+form label span.icons .indicator.red{ 
   margin-left: 5px;
 }
-form div label span.icons .indicator.green{ 
+form label span.icons .indicator.green{ 
   margin-left: 5px;
 }
-form div:first-child label:first-child span:first-child{
+form:first-child label:first-child span:first-child{
   border-top:1px solid black;
 } 
-form div label input:checked ~ span {
+form label input:checked ~ span {
   background: #000;
   color: #fff;
 }

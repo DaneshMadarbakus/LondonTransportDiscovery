@@ -4,6 +4,7 @@ import Content from '../Content';
 import Menu from '../Menu';
 import { NightService, GoodService, DisruptedService } from '../Indicators';
 import { Box } from '../Box';
+import * as helpers from '../../utils/helpers';
 
 class Main extends Component {
   constructor(props) {
@@ -79,11 +80,7 @@ class Main extends Component {
       return;
     }
     const selection = this.state.transportLines.find((obj) => { return obj.name === value; });;
-    let disruptedStatus = false;
-
-    if (selection.lineStatuses.filter((lineStatus) => { return lineStatus.statusSeverity !== 10 }).length > 0) {
-      disruptedStatus = true
-    }
+    const disruptedStatus = helpers.isDisruptedService(selection);
 
     this.setState({
       selectedOption: selection,

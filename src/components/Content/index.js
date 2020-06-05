@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './styles.css';
 import CycleContent from '../Cycle';
+import { HeadingTwo } from '../Headings';
+import { Box } from '../Box';
 
 class Content extends Component {
   render() {
@@ -12,11 +14,11 @@ class Content extends Component {
       optionContent = <p className="heading">Select Transport to view more</p>;
     } else if (disruptedStatus !== true) {
       optionContent = <div>
-        <p className="heading">No service disruptions</p>
+        <HeadingTwo className="heading" text="No service disruptions" />
       </div>;
     } else {
       optionContent = <div>
-      <p className="heading">Service currently suffering disruptions</p>
+      <HeadingTwo className="heading" text="Service currently suffering disruptions" />
       <ul>
       {
         selectedOption.lineStatuses.map((statuses, i) => {
@@ -30,11 +32,11 @@ class Content extends Component {
     }
 
     return (
-      <div className="content">
+      <Box>
         <div className="active-content">
           {optionContent}
         </div>
-      </div>
+      </Box>
     );
   }
 }

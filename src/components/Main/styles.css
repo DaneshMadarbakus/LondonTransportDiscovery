@@ -23,6 +23,7 @@ padding: 0.25rem 2rem 0 0;
 .my-row{
   display:flex;
   padding:3rem 0;
+  align-items:flex-start;
 }
 
 .content-holder{
