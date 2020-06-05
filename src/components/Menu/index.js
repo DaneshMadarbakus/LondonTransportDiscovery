@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import { NightService, GoodService, DisruptedService } from '../Indicators';
+import { RadioInput, RadioInputWithIcons } from '../RadioInputs';
 
 class Menu extends Component {
 
@@ -24,39 +25,19 @@ class Menu extends Component {
               }
 
               return (
-                <div key={line.name}>
-                  <label>
-                    <input
-                      tab-index="0"
-                      type="radio"
-                      value={line.name}
-                      name="lines"
-                      onChange={this.props.runChange}
-                    />
-                    <span className="name">{line.name}</span>
-                    <span className="icons">
-                      {night}{serviceStatus}
-                    </span>
-                  </label>
+                <div>
+                  <RadioInputWithIcons 
+                    value={line.name} 
+                    name="lines" 
+                    onChangeFn={this.props.runChange} 
+                    text={line.name}>{night}{serviceStatus}</RadioInputWithIcons>
                 </div>
               )
             }
             )
           }
           <div>
-            <label>
-              <input
-                tab-index="0"
-                type="radio"
-                value="cycle"
-                name="lines"
-                onChange={this.props.runChange}
-              />
-              <span className="name">Cycle Hire</span>
-              <span className="icons">
-                {/* {night}{serviceStatus} */}
-              </span>
-            </label>
+            <RadioInput value="cycle" name="lines" onChangeFn={this.props.runChange} text="Cycle Hire" />
           </div>
         </form>
       </div>

@@ -3,6 +3,7 @@ import './styles.css';
 import Content from '../Content';
 import Menu from '../Menu';
 import { NightService, GoodService, DisruptedService } from '../Indicators';
+import { Box } from '../Box';
 
 class Main extends Component {
   constructor(props) {
@@ -136,9 +137,11 @@ class Main extends Component {
             <li><DisruptedService /> - indicates disruptions in the service</li>
           </ul>
           <div className="my-row">
-            <div className="menu-holder">
+            <Box>
               <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
-            </div>
+            </Box>
+              
+
             <div className="content-holder">
               <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} cycleSubmit={this.handleCycleSubmit} noCycleEntry={this.state.noCycleEntry} cycleLocations={this.state.cycleLocations} cycleSearch={this.state.cycleSearch} />
             </div>

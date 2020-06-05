@@ -7,7 +7,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header>
+          {/* ?? <Title type="h1">London Transport Discovery</Title> */}
+          <h1>London Transport Discovery</h1>
+        </Header>
         <Main />
       </div>
     );

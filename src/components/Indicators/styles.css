@@ -1,14 +1,20 @@
-span.indicator{
+/* .indicator{
   border-radius: 50%;
   width: 15px;
   height: 15px;
-}
-span.night{
+} */
+.night{
   background: #0066CD;
 }
-span.green{
+.green{
   background: #33a532;
 }
-span.red{
+.red{
   background: #f9152f;
+}
+.badge{
+  border-radius: 50%;
+  overflow: hidden;
+  padding:0;
+  border:none;
 }
