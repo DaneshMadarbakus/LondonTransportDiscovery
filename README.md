@@ -5,6 +5,12 @@ With further time on this project, I would make the code more Dry by refacotring
 I would also make the design mobile responsive. 
 
 
+
+Questions for Ermes
+How should/can I start to divide presentational components? 
+Am I overengineering components? (Over refactoring?)
+How much styling should be in the component and how much in a seperate styles file
+
 # plan
 
 - refactor folder structure

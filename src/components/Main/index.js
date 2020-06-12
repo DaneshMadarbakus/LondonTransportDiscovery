@@ -5,6 +5,8 @@ import Menu from '../Menu';
 import { NightService, GoodService, DisruptedService } from '../Indicators';
 import { Box } from '../Box';
 import * as helpers from '../../utils/helpers';
+import { RSContainer } from '../RSContainer';
+import { RSRow } from '../RSRow';
 
 class Main extends Component {
   constructor(props) {
@@ -133,16 +135,17 @@ class Main extends Component {
             <li><GoodService /> - indicates a good service</li>
             <li><DisruptedService /> - indicates disruptions in the service</li>
           </ul>
-          <div className="my-row">
-            <Box>
-              <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
-            </Box>
-              
+          <RSContainer>
+            <RSRow>
+              <Box>
+                <Menu menuItems={this.state.transportLines} runChange={this.handleChange} />
+              </Box>
 
-            <div className="content-holder">
-              <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} cycleSubmit={this.handleCycleSubmit} noCycleEntry={this.state.noCycleEntry} cycleLocations={this.state.cycleLocations} cycleSearch={this.state.cycleSearch} />
-            </div>
-          </div>
+              <div className="content-holder">
+                <Content selectedOption={this.state.selectedOption} disruptedStatus={this.state.currentOptionDisrupted} cycleSelected={this.state.isCycle} cycleSubmit={this.handleCycleSubmit} noCycleEntry={this.state.noCycleEntry} cycleLocations={this.state.cycleLocations} cycleSearch={this.state.cycleSearch} />
+              </div>
+              </RSRow>
+          </RSContainer>
         </div>
       </main>
     );
